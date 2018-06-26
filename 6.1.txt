@@ -1,0 +1,13 @@
+#first question
+titanic_train$Title<-sapply(titanic_train$Name, FUN=function(x) {strsplit(x, split='[,.]')[[1]][1]})
+titanic_train$Title<-sub(' ','',titanic_train$Title)
+titanic_train$Title
+
+count<-table(titanic_train$Title)
+count
+barplot(count, main = "Family passenger count",
+        xlab = "Title", col =c("blue"), legend = rownames(count))
+
+#second question
+ggplot() +
+  geom_point(titanic_train ,mapping = aes(x= Title, y= Survived, size = Survived, color = Survived))
